@@ -1004,6 +1004,14 @@ contract Megalodon is IBEP20, Auth {
         isAntiWhaleExempt[account] = false;
     }
 
+    function exemptFromFee(address account) external onlyOwner{
+        isFeeExempt[account] = true;
+    }
+
+    function includeInFee(address account) external onlyOwner{
+        isFeeExempt[account] = false;
+    }
+
     function setAntiWhaleLimits(uint256 maxTxAmount, uint256 maxWalletAmount) external onlyOwner {
         _maxTxLimit = maxTxAmount;
         _maxWalletLimit = maxWalletAmount;
